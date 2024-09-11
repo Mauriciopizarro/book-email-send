@@ -1,0 +1,3 @@
+class EmptyEmailException(Exception):
+    pass
+
