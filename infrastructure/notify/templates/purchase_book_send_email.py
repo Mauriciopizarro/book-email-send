@@ -105,8 +105,8 @@ def get_body_book_purchase():
                     <p>Julia Alexandra Garcia</p>
                 </div>
                 <div class="instructions">
-                    <p>Por favor, responde a este correo con la dirección donde deseas recibir el libro.</p>
-                    <a href="mailto:tu-email@tudominio.com" class="button">Responder con mi Dirección</a>
+                    <p>Por favor, proporciona la dirección donde deseas recibir el libro.</p>
+                    <a href="https://form-book-shipping.vercel.app/" class="button">Enviar mi Dirección</a>
                 </div>
         
                 <p>Si tienes alguna pregunta o necesitas más información, no dudes en contactarnos.</p>
