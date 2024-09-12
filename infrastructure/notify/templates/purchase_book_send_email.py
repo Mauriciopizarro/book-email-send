@@ -83,6 +83,7 @@ def get_body_book_purchase():
                 top: -20px;
                 right: -20px;
                 width: 120px;
+                margin-left: 55%; 
                 transform: scaleX(-1);
             }
             .footer {
