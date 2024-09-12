@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     EMAIL_PASSWORD: str
     EMAIL_HOST: str
     EMAIL_PORT: int
+    DATABASE_MONGO_URL: str
 
 
     class Config:
