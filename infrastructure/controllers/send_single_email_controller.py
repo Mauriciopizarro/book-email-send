@@ -1,4 +1,4 @@
-from pydantic import BaseModel, validator, EmailStr
+from pydantic import BaseModel, EmailStr
 from fastapi import APIRouter, HTTPException
 from domain.Exceptions import EmptyEmailException
 from application.send_email_service import SendEmailService
@@ -9,7 +9,7 @@ send_email_service = SendEmailService()
 
 
 class RequestData(BaseModel):
-    email: str
+    email: EmailStr
 
 
 @router.post("/send/single_email")
