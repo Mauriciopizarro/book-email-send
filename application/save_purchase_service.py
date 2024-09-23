@@ -1,13 +1,13 @@
 from dependency_injector.wiring import Provide, inject
 from domain.models.purchase import Purchase
 from infrastructure.injector import Injector
-from infrastructure.interfaces.mongo_repository_interface import MongoRepositoryInterface
+from infrastructure.interfaces.purchase_repository_interface import PurchaseRepositoryInterface
 
 
 class SavePurchaseService:
 
     @inject
-    def __init__(self, purchase_repository: MongoRepositoryInterface = Provide[Injector.purchase_repo]):
+    def __init__(self, purchase_repository: PurchaseRepositoryInterface = Provide[Injector.purchase_repo]):
         self.purchase_repository = purchase_repository
 
 
