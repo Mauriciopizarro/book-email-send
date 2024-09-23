@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from domain.models.purchase import Purchase
 
 
-class MongoRepositoryInterface(ABC):
+class PurchaseRepositoryInterface(ABC):
 
     @abstractmethod
     def save(self, purchase: Purchase):

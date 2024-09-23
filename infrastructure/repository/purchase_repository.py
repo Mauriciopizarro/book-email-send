@@ -1,10 +1,10 @@
 from domain.models.purchase import Purchase
-from infrastructure.interfaces.mongo_repository_interface import MongoRepositoryInterface
+from infrastructure.interfaces.purchase_repository_interface import PurchaseRepositoryInterface
 from config import settings
 from pymongo import MongoClient
 
 
-class MongoRepository(MongoRepositoryInterface):
+class PurchaseRepository(PurchaseRepositoryInterface):
 
     instance = None
 
