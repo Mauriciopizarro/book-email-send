@@ -1,0 +1,2 @@
+class MailAlreadySentException(Exception):
+    pass
