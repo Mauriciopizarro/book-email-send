@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from domain.models.email import Email
+from pydantic import EmailStr
 
 
 class EmailRepositoryInterface(ABC):
@@ -10,6 +11,10 @@ class EmailRepositoryInterface(ABC):
 
     @abstractmethod
     def get_all_emails_sent(self):
+        pass
+
+    @abstractmethod
+    def get_by_email(self, email: EmailStr):
         pass
 
     # @abstractmethod

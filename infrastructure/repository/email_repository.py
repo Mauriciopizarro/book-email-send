@@ -3,6 +3,7 @@ from infrastructure.interfaces.mail_repository_interface import EmailRepositoryI
 from infrastructure.interfaces.purchase_repository_interface import PurchaseRepositoryInterface
 from config import settings
 from pymongo import MongoClient
+from pydantic import EmailStr
 
 
 class EmailRepository(EmailRepositoryInterface):
@@ -32,3 +33,7 @@ class EmailRepository(EmailRepositoryInterface):
     def get_all_emails_sent(self):
         all_sent_emails = list(self.db.find({}))
         return all_sent_emails
+
+    def get_by_email(self, email: EmailStr):
+        result = self.db.find_one({"email_address": email})
+        return result
