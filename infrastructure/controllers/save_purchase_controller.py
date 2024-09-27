@@ -1,11 +1,12 @@
 from pydantic import BaseModel
 from typing import Optional
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from application.save_purchase_service import SavePurchaseService
+from infrastructure.injector import Injector
+from dependency_injector.wiring import Provide, inject
 
 
 router = APIRouter()
-save_purchase_service = SavePurchaseService()
 
 class SavePurchaseRequestData(BaseModel):
     identification_number: int
@@ -22,5 +23,7 @@ class SavePurchaseRequestData(BaseModel):
 
 
 @router.post("/save/purchase")
-async def save_purchase_controller(save_request_data: SavePurchaseRequestData):
+@inject
+async def save_purchase_controller(save_request_data: SavePurchaseRequestData,
+                                   save_purchase_service = Depends(Provide[Injector.save_purchase_service])):
     save_purchase_service.save_purchase(save_request_data.__dict__)

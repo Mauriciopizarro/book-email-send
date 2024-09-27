@@ -1,12 +1,13 @@
 from typing import List
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from datetime import datetime
+from infrastructure.injector import Injector
+from dependency_injector.wiring import Provide, inject
 from pydantic import BaseModel, EmailStr
 from application.get_all_emails_sent_service import AllEmailsSentService
 
 
 router = APIRouter()
-all_emails_service = AllEmailsSentService()
 
 
 class ResponseModelData(BaseModel):
@@ -15,7 +16,8 @@ class ResponseModelData(BaseModel):
 
 
 @router.get("/email/all_sent", response_model=List[ResponseModelData])
-async def get_all_emails_sent():
+@inject
+async def get_all_emails_sent(all_emails_service = Depends(Provide[Injector.get_all_emails_service])):
     data = all_emails_service.get_all_emails_sent()
     response_list = []
     for email_sent in data:
