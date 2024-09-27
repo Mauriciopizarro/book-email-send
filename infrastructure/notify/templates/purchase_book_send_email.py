@@ -112,6 +112,7 @@ def get_body_book_purchase():
         
                 <p>Si tienes alguna pregunta o necesitas más información, no dudes en contactarnos.</p>
                 <p class="footer">Saludos cordiales,<br>Equipo de Ventas</p>
+                <p class="footer">Aplicacion desarrollada por <a href="https://www.instagram.com/maauripizarro"> Mauricio Pizarro </a> </p>
             </div>
         </body>
     </html>
