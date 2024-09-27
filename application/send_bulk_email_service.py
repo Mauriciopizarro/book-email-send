@@ -1,16 +1,12 @@
 from infrastructure.interfaces.mailer_interface import MailerInterface
 from infrastructure.interfaces.mail_repository_interface import EmailRepositoryInterface
-from dependency_injector.wiring import Provide, inject
-from infrastructure.injector import Injector
 import datetime
 from domain.models.email import Email
 
 
 class SendBulkEmailService:
 
-    @inject
-    def __init__(self, mailer: MailerInterface = Provide[Injector.mail],
-                 email_repo: EmailRepositoryInterface = Provide[Injector.email_repo]):
+    def __init__(self, mailer: MailerInterface , email_repo: EmailRepositoryInterface):
         self.mailer = mailer
         self.email_repo = email_repo
 

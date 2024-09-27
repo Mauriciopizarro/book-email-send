@@ -7,7 +7,8 @@ from infrastructure.controllers import (send_single_email_controller,
                                         get_all_emails_sent_controller)
 
 app = FastAPI()
-
+injector = Injector()
+app.container = injector
 
 app.include_router(send_single_email_controller.router)
 app.include_router(save_purchase_controller.router)

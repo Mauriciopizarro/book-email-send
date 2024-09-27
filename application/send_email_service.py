@@ -1,18 +1,13 @@
 import datetime
+from domain.models.email import Email
 from domain.Exceptions.MailAlreadySentException import MailAlreadySentException
 from domain.Exceptions.EmptyEmailException import EmptyEmailException
-from dependency_injector.wiring import Provide, inject
-from domain.models.email import Email
-from infrastructure.injector import Injector
 from infrastructure.interfaces.mail_repository_interface import EmailRepositoryInterface
 from infrastructure.interfaces.mailer_interface import MailerInterface
 
 class SendEmailService:
 
-    @inject
-    def __init__(self, mailer: MailerInterface = Provide[Injector.mail],
-                 email_repo: EmailRepositoryInterface = Provide[Injector.email_repo]
-                 ):
+    def __init__(self, mailer: MailerInterface, email_repo: EmailRepositoryInterface):
         self.mailer = mailer
         self.email_repo = email_repo
 

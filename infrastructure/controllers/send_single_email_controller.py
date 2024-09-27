@@ -1,13 +1,14 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from domain.Exceptions.MailAlreadySentException import MailAlreadySentException
 from domain.Exceptions.EmptyEmailException import EmptyEmailException
 from application.send_email_service import SendEmailService
+from infrastructure.injector import Injector
+from dependency_injector.wiring import Provide, inject
 
 
 router = APIRouter()
-send_email_service = SendEmailService()
 
 
 class RequestData(BaseModel):
@@ -16,7 +17,8 @@ class RequestData(BaseModel):
 
 
 @router.post("/send/single_email")
-async def send_single_email_controller(request: RequestData):
+@inject
+async def send_single_email_controller(request: RequestData, send_email_service = Depends(Provide[Injector.send_email_service])):
     try:
         return send_email_service.send_single_email(request.email, request.force_send)
     except EmptyEmailException:
